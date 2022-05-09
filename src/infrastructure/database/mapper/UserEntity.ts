@@ -20,7 +20,5 @@ export class User {
     @Index({ unique: true })
     email: string
 
-    @Column("text", {array: true, default: {}})
-    tokens: string[]
     
 }

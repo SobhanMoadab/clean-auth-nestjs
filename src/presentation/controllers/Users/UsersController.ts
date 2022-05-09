@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Get, HttpException, Post } from "@nestjs/common";
 import { UsersUseCases } from "src/application/use-cases/UsersUseCase";
 import { CreateUserDTO } from "./CreateUserDTO";
 
@@ -13,8 +13,9 @@ export class UsersController {
     }
 
     @Get('/')
-    async allUsers(){
+    async allUsers() {
         const findAllUsers = await this.usersUseCases.findAllUsers()
+        if (!findAllUsers[0]) throw new HttpException('User list is empty', 404)
         return findAllUsers
     }
 }

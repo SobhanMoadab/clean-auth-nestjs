@@ -19,12 +19,14 @@ export class AuthController {
             password: await hash(body.password, 10),
         }
         const newUser = await this.usersUseCases.createUser(dto)
-        // await this.usersUseCases.updateUser()git 
-        return newUser
+        const token = sign(newUser, process.env.JWT)
+        await this.usersUseCases.updateUser(newUser.id, { token })
+        return { newUser, token }
     }
 
     @Put('/')
     async login(@Body() dto: LoginDTO) {
+        // return token
         const foundedUser = await this.authUseCases.login(dto)
         return foundedUser
     }

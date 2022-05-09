@@ -1,3 +1,4 @@
+import { PartialType } from "@nestjs/mapped-types";
 import { IsEmail, IsNotEmpty, IsString, MaxLength } from "class-validator";
 import { User } from "src/domain/shared/models/User";
 
@@ -5,18 +6,21 @@ export class CreateUserDTO {
     @IsString()
     @IsNotEmpty()
     @MaxLength(255)
-    name: string 
+    name: string
 
     @IsString()
     @IsNotEmpty()
-    password: string 
+    password: string
 
 
     @IsEmail()
     @IsNotEmpty()
-    email: string 
+    email: string
 
+    token?: string
     static toEntity(dto: CreateUserDTO): User {
         return new User(dto.name, dto.email, dto.password)
     }
 }
+
+export class UpdateUserDTO extends PartialType(CreateUserDTO){}

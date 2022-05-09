@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { IUserRepository } from "src/application/ports/IUsersRepository";
 import { User } from "src/domain/shared/models/User";
+import { CreateUserDTO, UpdateUserDTO } from "src/presentation/controllers/Users/CreateUserDTO";
 import { Repository } from "typeorm";
 import { User as UserEntity } from "../mapper/UserEntity";
 
@@ -11,13 +12,23 @@ export class UsersRepository implements IUserRepository {
     constructor(
         @InjectRepository(UserEntity) private readonly usersRepository: Repository<UserEntity>
     ) { }
+
+    public async updateUser(id: number, data: UpdateUserDTO): Promise<User> {
+
+        const updatedUser = await this.usersRepository.save({
+            id,
+            ...data
+        })
+        return updatedUser
+    }
     public async createUser(user: User): Promise<User> {
         const createdUser = await this.usersRepository.save(user)
         return createdUser
     }
 
-    public async findUserById(id: string): Promise<User> {
-        throw new Error()
+    public async findUserById(id: number): Promise<User> {
+        const findOrEmpty = await this.usersRepository.findOneBy({ id })
+        return findOrEmpty
     }
 
     public async findUserByEmail(email: string): Promise<User> {

@@ -9,16 +9,12 @@ export class User {
 
     email: string
 
-    tokens?: string[]
-
-    constructor(name: string, password: string, email: string
-        , tokens?: string[], id?: number
+    constructor(name: string, password: string, email: string, id?: number
     ) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.id = id;
-        this.tokens = tokens
     }
 
     static async comparePassword(old: string, given: string) {
