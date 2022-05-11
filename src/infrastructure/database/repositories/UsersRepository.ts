@@ -32,7 +32,8 @@ export class UsersRepository implements IUserRepository {
     }
 
     public async findUserByEmail(email: string): Promise<User> {
-        const findOrEmpty = await this.usersRepository.findOneBy({ email })
+        const findOrEmpty = await this.usersRepository.findOneByOrFail({email})
+        console.log({findOrEmpty})
         return findOrEmpty
     }
 
