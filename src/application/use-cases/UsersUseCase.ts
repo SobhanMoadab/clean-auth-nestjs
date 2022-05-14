@@ -12,8 +12,7 @@ export class UsersUseCases {
     async createUser(user: User): Promise<User> {
         // check for existance and stuff like that
         const foundedUser = await this.usersRepository.findUserByEmail(user.email)
-        console.log({foundedUser})
-        if (foundedUser) throw new HttpException('User exists with given email', 401)
+        if (foundedUser) throw new HttpException('User exists with given email', 400)
         return await this.usersRepository.createUser(user)
     }
 

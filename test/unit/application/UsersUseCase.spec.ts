@@ -2,7 +2,6 @@ import { IUserRepository } from '../../../src/application/ports/IUsersRepository
 import { User } from '../../../src/domain/shared/models/User'
 import { Test } from '@nestjs/testing'
 import { UsersUseCases } from '../../../src/application/use-cases/UsersUseCase'
-import { UpdateResult } from 'typeorm'
 
 
 describe('UsersUseCase', () => {

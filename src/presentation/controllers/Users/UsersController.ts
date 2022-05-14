@@ -1,5 +1,6 @@
-import { Body, Controller, Get, HttpException, Post } from "@nestjs/common";
-import { UsersUseCases } from "src/application/use-cases/UsersUseCase";
+import { Body, Controller, Get, HttpException, NotFoundException, Param, Post, Res } from "@nestjs/common";
+import { Response } from "express";
+import { UsersUseCases } from "../../../application/use-cases/UsersUseCase";
 import { CreateUserDTO } from "./CreateUserDTO";
 
 @Controller('users')
@@ -18,4 +19,12 @@ export class UsersController {
         if (!findAllUsers[0]) throw new HttpException('User list is empty', 404)
         return findAllUsers
     }
+
+    @Get('/:id')
+    async findById(@Param() id: number) {
+        const foundedUser = await this.usersUseCases.findUserById(id)
+        if (!foundedUser) throw new NotFoundException()
+        return foundedUser
+    }
+
 }

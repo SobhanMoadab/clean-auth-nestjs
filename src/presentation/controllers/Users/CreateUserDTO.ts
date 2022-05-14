@@ -1,6 +1,6 @@
 import { PartialType } from "@nestjs/mapped-types";
 import { IsEmail, IsNotEmpty, IsString, MaxLength } from "class-validator";
-import { User } from "src/domain/shared/models/User";
+import { User } from "../../../domain/shared/models/User";
 
 export class CreateUserDTO {
     @IsString()
