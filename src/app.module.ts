@@ -11,7 +11,7 @@ import { User } from './infrastructure/database/mapper/UserEntity';
     UsersModule, TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
-      port: 5455,
+      port: 5432,
       username: 'postgresUser',
       password: 'postgresPW',
       database: 'postgresDB',
