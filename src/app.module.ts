@@ -12,9 +12,9 @@ import { User } from './infrastructure/database/mapper/UserEntity';
       type: 'postgres',
       host: 'localhost',
       port: 5432,
-      username: 'postgresUser',
-      password: 'postgresPW',
-      database: 'postgresDB',
+      username: 'postgres',
+      password: 'postgres',
+      database: 'postgres',
       entities: [User],
       synchronize: true
     })],

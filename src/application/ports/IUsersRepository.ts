@@ -1,4 +1,4 @@
-import { User } from "src/domain/shared/models/User";
+import { User } from "src/domain/User/User";
 import { CreateUserDTO, UpdateUserDTO } from "src/presentation/controllers/Users/CreateUserDTO";
 
 export const USER_REPOSITORY = 'IUserRepository'

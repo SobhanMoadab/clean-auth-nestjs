@@ -1,7 +1,7 @@
-import { Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { IUserRepository } from "src/application/ports/IUsersRepository";
-import { User } from "src/domain/shared/models/User";
+import { User } from "src/domain/User/User";
 import { CreateUserDTO, UpdateUserDTO } from "src/presentation/controllers/Users/CreateUserDTO";
 import { Repository } from "typeorm";
 import { User as UserEntity } from "../mapper/UserEntity";
@@ -27,13 +27,13 @@ export class UsersRepository implements IUserRepository {
     }
 
     public async findUserById(id: number): Promise<User> {
-        const findOrEmpty = await this.usersRepository.findOneBy({ id })
+        const findOrEmpty = await this.usersRepository.findOneByOrFail({ id })
         return findOrEmpty
     }
 
     public async findUserByEmail(email: string): Promise<User> {
-        const findOrEmpty = await this.usersRepository.findOneByOrFail({email})
-        console.log({findOrEmpty})
+        const findOrEmpty = await this.usersRepository.findOneByOrFail({ email })
+        console.log({ findOrEmpty })
         return findOrEmpty
     }
 

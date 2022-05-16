@@ -1,5 +1,5 @@
 import { IUserRepository } from "../../../application/ports/IUsersRepository";
-import { User } from "../../../domain/shared/models/User";
+import { User } from "../../../domain/User/User";
 import { UpdateUserDTO } from "../../../presentation/controllers/Users/CreateUserDTO";
 
 export class InMemoryRepository implements IUserRepository {

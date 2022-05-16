@@ -1,23 +1,31 @@
-version: '3.2'
+version: '3'
 services:
+  rabbitmq: 
+    image: 
+  nest-email:
+    volumes:
+      - /usr/src/app/node_modules
+    build:
+      context: .
+      dockerfile: '../email-service/Dockerfile'
+    networks:
+      - node-app
   db:
     image: postgres
     restart: always
-    environment:
-      POSTGRES_PASSWORD: postgresPW
-      POSTGRES_USER: postgresUser
-      POSTGRES_DB: 'postgresDB'
-      POSTGRES_HOST_AUTH_METHOD: 'trust'
     ports:
-      - "5432:5432"
+      - '5432:5432'
     networks:
       - node-app
     volumes:
       - db:/var/lib/postgresql/data
   nest-auth:
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
     build:
       context: .
-      dockerfile: 'Dockerfile'
+      dockerfile: Dockerfile
     ports:
       - '3000:3000'
     links:

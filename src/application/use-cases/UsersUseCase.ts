@@ -1,5 +1,5 @@
 import { HttpException, Inject } from "@nestjs/common";
-import { User } from "src/domain/shared/models/User";
+import { User } from "src/domain/User/User";
 import { CreateUserDTO, UpdateUserDTO } from "src/presentation/controllers/Users/CreateUserDTO";
 import { IUserRepository, USER_REPOSITORY } from "../ports/IUsersRepository";
 
@@ -11,8 +11,8 @@ export class UsersUseCases {
 
     async createUser(user: User): Promise<User> {
         // check for existance and stuff like that
-        const foundedUser = await this.usersRepository.findUserByEmail(user.email)
-        if (foundedUser) throw new HttpException('User exists with given email', 400)
+        // const foundedUser = await this.usersRepository.findUserByEmail(user.email)
+        // if (foundedUser) throw new HttpException('User exists with given email', 400)
         return await this.usersRepository.createUser(user)
     }
 

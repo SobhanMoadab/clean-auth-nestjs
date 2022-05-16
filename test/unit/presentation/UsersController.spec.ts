@@ -3,7 +3,7 @@ import { Test } from "@nestjs/testing"
 import { Response } from "express"
 import { IUserRepository } from "../../../src/application/ports/IUsersRepository"
 import { UsersUseCases } from "../../../src/application/use-cases/UsersUseCase"
-import { User } from "../../../src/domain/shared/models/User"
+import { User } from "../../../src/domain/User/User"
 import { InMemoryRepository } from "../../../src/infrastructure/database/repositories/InMemoryRepository"
 import { UsersController } from "../../../src/presentation/controllers/Users/UsersController"
 

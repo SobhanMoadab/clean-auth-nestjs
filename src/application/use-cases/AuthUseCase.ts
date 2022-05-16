@@ -1,5 +1,5 @@
 import { HttpException, Inject } from "@nestjs/common";
-import { User } from "src/domain/shared/models/User";
+import { User } from "src/domain/User/User";
 import { LoginDTO } from "src/presentation/controllers/Auth/LoginDTO";
 import { IUserRepository, USER_REPOSITORY } from "../ports/IUsersRepository";
 

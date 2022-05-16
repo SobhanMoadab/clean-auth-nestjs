@@ -1,5 +1,5 @@
 import { IsEmail, IsNotEmpty, IsString, MaxLength } from "class-validator";
-import { User } from "src/domain/shared/models/User";
+import { User } from "src/domain/User/User";
 
 export class LoginDTO {
 

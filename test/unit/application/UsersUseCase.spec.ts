@@ -1,5 +1,5 @@
 import { IUserRepository } from '../../../src/application/ports/IUsersRepository'
-import { User } from '../../../src/domain/shared/models/User'
+import { User } from '../../../src/domain/User/User'
 import { Test } from '@nestjs/testing'
 import { UsersUseCases } from '../../../src/application/use-cases/UsersUseCase'
 
